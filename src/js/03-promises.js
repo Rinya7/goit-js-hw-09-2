@@ -13,11 +13,15 @@ function callback(evtent) {
     elements: { delay, step, amount },
   } = event.target;
 
-  console.log(step.value);
-  for (let i = 0; i < amount.value; i += 1) {
-    createPromise(i + 1, Number(delay.value) + Number(step.value * i))
-      .then(messOk => Notify.success(messOk))
-      .catch(messError => Notify.failure(messError));
+  if (amount.value > 0 && delay.value > 0 && step.value > 0) {
+    console.log(step.value);
+    for (let i = 0; i < amount.value; i += 1) {
+      createPromise(i + 1, Number(delay.value) + Number(step.value * i))
+        .then(messOk => Notify.success(messOk))
+        .catch(messError => Notify.failure(messError));
+    }
+  } else {
+    Notify.failure('Enter value > 0');
   }
 }
 
