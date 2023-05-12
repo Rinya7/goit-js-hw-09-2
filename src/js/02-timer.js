@@ -39,7 +39,6 @@ const options = {
   },
 };
 
-const flatpickr = require('flatpickr');
 flatpickr('#datetime-picker', options);
 
 function callbackStartTimer(evt) {
